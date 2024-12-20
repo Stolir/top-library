@@ -59,13 +59,17 @@ body {
     display: flex;
 }
 
+.column {
+    flex-direction: column;
+}
+
 .grid-container {
     display: grid;
 }
 
 .page-layout {
     height: 100vh;
-    grid-template: auto 1fr / 1fr 5fr;
+    grid-template: auto 1fr / auto 1fr;
     grid-template-areas: "header header"
                          "sidebar main";
 }
@@ -95,11 +99,58 @@ a {
     margin-right: 50px; 
 }
 
+.header img:hover {
+  cursor: pointer;
+}
 
 .sidebar {
     grid-area: sidebar;
+    padding-top: 80px;
+    gap: 30px;
 }
+
+input {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+input:focus {
+  outline: rgb(173, 172, 172) solid 1px;
+}
+
+
+.filter {
+    gap: 7px;
+    padding-left: 30px;
+    color: grey;
+}
+
+.filter div:hover {
+    cursor: pointer;
+    color: black;
+}
+
 
 .main {
     grid-area: main;
+}
+
+.add {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  background-color: black;
+  color: white;
+  font-size: 40px;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+}
+
+.add:hover {
+  cursor: pointer;
 }
