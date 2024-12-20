@@ -32,8 +32,29 @@
                 <div>Plan to read</div>
             </div>
         </div>
-        <div class="main" style="padding-right: 100px;">
-           
+        <div class="main flex column">
+            <div class="reading flex column">
+                <table>
+                    <caption>Reading</caption>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Pages</th>
+                        <th>Rating</th>
+                        <th>Status</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="completed flex column" id="hidden">
+                <table>
+                    <caption>Completed</caption>
+                </table>
+            </div>
+            <div class="plan-to-read flex column" id="hidden">
+                <table>
+                    <caption>Plan to read</caption>
+                </table>
+            </div>
         </div>
 
         <button type="button" class="add">+</button>

@@ -137,6 +137,18 @@ input:focus {
 
 .main {
     grid-area: main;
+    padding: 80px 100px 80px 220px;
+}
+
+#hidden {
+  display: none;
+} 
+
+caption{
+  color: grey;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: left;
 }
 
 .add {
