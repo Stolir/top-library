@@ -49,8 +49,12 @@
 /* Josh Cameau's CSS reset */
 
 body {
-    background-color: rgb(206, 206, 206);
+    background-color: rgb(238, 238, 238);
     color: black;
+}
+
+.flex {
+    display: flex;
 }
 
 .grid-container {
@@ -58,14 +62,39 @@ body {
 }
 
 .page-layout {
-    grid-template: 1fr 5fr / 1fr 5fr;
-    grid-template-areas: "header" "header"
-                         "sidebar" "main";
+    height: 100vh;
+    grid-template: auto 1fr / 1fr 5fr;
+    grid-template-areas: "header header"
+                         "sidebar main";
 }
 
 .header {
     grid-area: header;
     background-color: white;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: 900;
+    margin-left: 160px; 
+}
+
+.nav {
+    font-size: 16px;
+    gap: 45px;
+    margin-right: 220px;
+}
+
+.profile {
+    margin-right: 120px;
 }
 
 .sidebar {
