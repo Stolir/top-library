@@ -1,3 +1,27 @@
+const addButton = document.querySelector(".add");
+const modal = document.querySelector("dialog");
+const form = modal.querySelector("form");
+
+addButton.addEventListener("click", () => {
+    modal.showModal()
+})
+
+form.addEventListener('submit', (e) => {
+  if (e.submitter.formMethod !== 'dialog') {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    addBookToLibrary(
+      formData.get('title'),
+      formData.get('author'),
+      formData.get('pages'),
+      formData.get('rating'),
+      formData.get('status'))
+  }
+})
+
+
 const completed = [];
 const reading = [];
 const planToRead = [];
@@ -12,7 +36,7 @@ function Book(title, author, pageCount, raiting, status) {
 
 function addBookToLibrary(title, author, pageCount, raiting, status) {
 
-    let book = new Book(title, author, pageCount, raiting, status);
+    const book = new Book(title, author, pageCount, raiting, status);
     
   switch(status) {
     case "completed":
@@ -21,16 +45,12 @@ function addBookToLibrary(title, author, pageCount, raiting, status) {
     case "reading":
         reading.push(book)
         break;
-    case "plan-to-read":
+    default:
         planToRead.push(book)
   }
-
+  renderBooks(completed, reading, planToRead);
 }
 
+function renderBooks(completed, reading, planToRead) {
 
-const addButton = document.querySelector(".add");
-const modal = document.querySelector("dialog")
-
-addButton.addEventListener("click", () => {
-    modal.showModal()
-})
+}
