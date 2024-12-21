@@ -109,7 +109,7 @@ a {
     gap: 30px;
 }
 
-input {
+input, select {
     background-color: white;
     border: none;
     border-radius: 5px;
@@ -140,14 +140,28 @@ input:focus {
     padding: 80px 100px 80px 220px;
 }
 
-#hidden {
+.hidden {
   display: none;
 } 
+
+table {
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 7px;
+  width: 100%;
+}
 
 caption{
   color: grey;
   font-size: 24px;
   font-weight: 900;
+  text-align: left;
+}
+
+
+
+th, td {
+  padding: 1rem 1rem 0.25rem 1rem;
   text-align: left;
 }
 
@@ -165,4 +179,51 @@ caption{
 
 .add:hover {
   cursor: pointer;
+}
+
+dialog {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+dialog input, select{
+  border: 1px solid grey;
+  height: 40px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+dialog form {
+  gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+  padding: 20px;
+}
+
+label {
+  font-weight: 900;
+}
+
+dialog button {
+  font-weight: 900;
+  font-size: 16px;
+  border: none;
+  width: 50%;
+  height: 40px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  align-self: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#status {
+  margin-bottom: 5px;
 }
