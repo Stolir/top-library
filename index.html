@@ -38,22 +38,36 @@
                 <table>
                     <caption>Reading</caption>
                     <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Pages</th>
-                        <th>Rating</th>
-                        <th>Status</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </table>
             </div>
             <div class="completed flex column hidden">
                 <table>
                     <caption>Completed</caption>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Status</th>
+                    </tr>
                 </table>
             </div>
             <div class="plan-to-read flex column hidden">
                 <table>
                     <caption>Plan to read</caption>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Status</th>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -80,6 +94,7 @@
             <div class="flex column">
                 <label for="status">Status:</label>
                 <select name="status" id="status">
+                    <option value="" selected hidden disabled></option>
                     <option value="completed">Completed</option>
                     <option value="reading">Reading</option>
                     <option value="plan-to-read">Plan to read</option>
