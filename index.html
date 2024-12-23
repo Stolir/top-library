@@ -37,18 +37,24 @@
             <div class="reading flex column hidden">
                 <table>
                     <caption>Reading</caption>
-                    <tr>
-                        <th scope="col">Title</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">Pages</th>
-                        <th scope="col">Rating</th>
-                        <th scope="col">Status</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Pages</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
                 </table>
             </div>
             <div class="completed flex column hidden">
                 <table>
                     <caption>Completed</caption>
+                    <thead>
                     <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Author</th>
@@ -56,11 +62,16 @@
                         <th scope="col">Rating</th>
                         <th scope="col">Status</th>
                     </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
                 </table>
             </div>
             <div class="plan-to-read flex column hidden">
                 <table>
                     <caption>Plan to read</caption>
+                    <thead>
                     <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Author</th>
@@ -68,6 +79,10 @@
                         <th scope="col">Rating</th>
                         <th scope="col">Status</th>
                     </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
                 </table>
             </div>
         </div>
@@ -85,7 +100,7 @@
             </div>
             <div class="flex column">
                 <label for="pages">Pages:</label>
-                <input type="text" name="pages" id="pages">
+                <input type="number" name="pages" id="pages" min="1">
             </div>
             <div class="flex column">
                 <label for="rating">Rating:</label>

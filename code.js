@@ -3,9 +3,10 @@ const modal = document.querySelector("dialog");
 const form = modal.querySelector("form");
 
 // select all 3 tables
-const readingTable = document.querySelector(".reading, .reading table")
-const completedTable = document.querySelector(".completed, .reading table")
-const planToReadTable = document.querySelector(".plan-to-read, .plan-to-read table") 
+const readingTable = document.querySelectorAll(".reading, .reading tbody");
+const completedTable = document.querySelectorAll(".completed, .completed tbody");
+const planToReadTable = document.querySelectorAll(".plan-to-read, .plan-to-read tbody") ;
+const emptyMessage = document.querySelector(".empty");
 
 
 addButton.addEventListener("click", () => {
@@ -46,23 +47,45 @@ function addBookToLibrary(title, author, pageCount, raiting, status) {
     
   switch(status) {
     case "completed":
-        completed.push(book);
+        completedArray.push(book);
         sortByRating(completedArray);
-        renderBook(completedTable, completedArray);
+        renderBooks(completedTable, completedArray);
         break;
     case "reading":
-        reading.push(book);
+        readingArray.push(book);
         sortByName(readingArray);
-        renderBook(readingTable, readingArray);
+        renderBooks(readingTable, readingArray);
         break;
     default:
-        planToRead.push(book);
+        planToReadArray.push(book);
         sortByName(planToReadArray);
-        renderBook(planToReadTable, planToReadArray);
+        renderBooks(planToReadTable, planToReadArray);
   }
 }
 
 function renderBooks(elements, array) {
+
+  while ((elements[1].rows.length) > 0) {
+    elements[1].deleteRow(-1);
+  }
+
+  array.forEach((obj) => {
+    const tableRow = elements[1].insertRow(-1);
+    for (let key in obj) {
+      const tableCell = tableRow.insertCell(-1);
+      tableCell.textContent = obj[key];
+    }
+    elements[1].appendChild(tableRow);
+  });
+
+  if (elements[0].classList.contains("hidden")) {
+    elements[0].classList.toggle("hidden");
+    emptyMessage.classList.add("hidden")
+  }
+
+  // for each object in the books array
+    // make a new row in the table
+      // make a new cell for each value in the object and add it to the row
 
 }
 
@@ -73,3 +96,4 @@ function sortByRating(array) {
 function sortByName(array) {
   array.sort((a, b) => a.title - b.title);
 }
+
