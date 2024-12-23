@@ -46,12 +46,12 @@ function addBookToLibrary(title, author, pageCount, raiting, status) {
   const book = new Book(title, author, pageCount, raiting, status);
     
   switch(status) {
-    case "completed":
+    case "Completed":
         completedArray.push(book);
         sortByRating(completedArray);
         renderBooks(completedTable, completedArray);
         break;
-    case "reading":
+    case "Reading":
         readingArray.push(book);
         sortByName(readingArray);
         renderBooks(readingTable, readingArray);
