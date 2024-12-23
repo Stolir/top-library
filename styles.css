@@ -140,6 +140,7 @@ input:focus {
     padding: 80px 100px 80px 220px;
 }
 
+
 .hidden {
   display: none;
 } 
@@ -151,14 +152,15 @@ table {
   width: 100%;
 }
 
-caption{
+caption, .empty{
   color: grey;
   font-size: 24px;
-  font-weight: 900;
   text-align: left;
 }
 
-
+caption {
+  font-weight: 900;
+}
 
 th, td {
   padding: 1rem 1rem 0.25rem 1rem;
