@@ -191,17 +191,9 @@ td:last-child {
   position: relative;
   display: flex;
   flex-direction: row;
+  gap: 15px;
 }
 
-/* td:last-child:hover::after {
-  background-image: url('/assets/pencil.svg');
-  display: inline-block;
-  width: 20px; 
-  height: 20px;
-  content: "";
-  margin-left: auto;
-  cursor: pointer;
-} */
 
 .add {
   position: fixed;
@@ -267,13 +259,16 @@ button:hover {
 }
 
 
-.edit {
+.edit, .delete {
   visibility: hidden;
   width: 20px;
+}
+.edit {
   margin-left: auto;
 }
 
-td:last-child:hover .edit {
+td:last-child:hover .edit, 
+td:last-child:hover .delete{
   visibility: visible;
   cursor: pointer;
 }

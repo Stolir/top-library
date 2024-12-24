@@ -6,6 +6,7 @@ const addButton = document.querySelector(".add");
 const modal = document.querySelector("dialog");
 const form = modal.querySelector("form");
 
+const editOptions = document.querySelector("#editOptions")
 
 // select all 3 tables
 const readingTable = document.querySelectorAll(".reading, .reading tbody");
@@ -44,7 +45,7 @@ function Book(title, author, pageCount, raiting, status) {
   this.title = title;
   this.author = author;
   this.pageCount = pageCount;
-  this.raiting = raiting;
+  this.rating = raiting;
   this.status = status;
 }
 
@@ -83,29 +84,49 @@ function renderBooks(elements, array) {
     for (let key in obj) {
       const tableCell = tableRow.insertCell(-1);
       tableCell.textContent = obj[key];
+      // if we are on the last cell add the edit/delete button inside it
       if (index === keysLength - 1) {
-        const icon = document.createElement("img");
-        icon.setAttribute('src', 'assets/pencil.svg')
-        icon.classList.add('edit')
-        tableCell.appendChild(icon)
+        // make edit icon
+        const editIcon = document.createElement("img");
+        editIcon.setAttribute('src', 'assets/pencil.svg');
+        editIcon.classList.add('edit');
+        editIcon.addEventListener('click', () => {
+          const parentRow = editIcon.closest('tr');
+          const parentIndex = parentRow.rowIndex;
+          editBook(elements, array, parentIndex)
+        })
+        // make delete Icon 
+        const deleteIcon = document.createElement("img");
+        deleteIcon.setAttribute('src', 'assets/delete.svg');
+        deleteIcon.classList.add('delete');
+        deleteIcon.addEventListener('click', () => {
+          const parentRow = deleteIcon.closest('tr');
+          const parentIndex = parentRow.rowIndex;
+          deleteBook(elements, array, parentIndex)
+        });
+        tableCell.appendChild(editIcon);
+        tableCell.appendChild(deleteIcon);
       }
       index++;
     }
     elements[1].appendChild(tableRow);
   });
 
-  if (elements[0].classList.contains("hidden")) {
-    elements[0].classList.toggle("hidden");
+  if (array.length <= 0) {
+    elements[0].classList.add("hidden");
+  }
+  else {
+    elements[0].classList.remove("hidden");
     emptyMessage.classList.add("hidden")
   }
 }
 
 function sortByRating(array) {
-  array.sort((a, b) => a.rating - b.rating);
+  return array.sort((a, b) => b.rating - a.rating);
 }
 
 function sortByName(array) {
-  array.sort((a, b) => a.title - b.title);
+  return array.sort((a, b) => a.title.localeCompare(b.title));
 }
 
 function filterTables(filter) {
@@ -135,4 +156,14 @@ function filterTables(filter) {
       readingTable[0].classList.remove("hidden");
     }
   }
+}
+
+
+function deleteBook(elements, array, index) {
+  array.splice(index - 1, 1);
+  renderBooks(elements, array);
+}
+
+function editBook(elements, array, index) {
+
 }
