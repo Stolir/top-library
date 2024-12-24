@@ -122,6 +122,11 @@ input:focus, select:focus {
   outline: rgb(173, 172, 172) solid 1px;
 }
 
+input:user-invalid {
+  border-color: red;
+
+}
+
 
 .filter {
     gap: 7px;
@@ -169,15 +174,17 @@ caption {
 th, td {
   padding: 1rem;
   text-align: left;
-  width: 7%;
+  /* width: 7%; */
 }
 
 tr:hover td {
   background-color: rgb(0, 0, 0, 0.2);
 }
 
-tr:first-child, tr:nth-child(2){
-  width: 40%;
+
+td:nth-child(3), td:nth-child(4),
+th:nth-child(3), th:nth-child(4){
+  text-align: center;
 }
 
 .add {

@@ -1,6 +1,11 @@
+const completedArray = [];
+const readingArray = [];
+const planToReadArray = [];
+
 const addButton = document.querySelector(".add");
 const modal = document.querySelector("dialog");
 const form = modal.querySelector("form");
+
 
 // select all 3 tables
 const readingTable = document.querySelectorAll(".reading, .reading tbody");
@@ -8,6 +13,10 @@ const completedTable = document.querySelectorAll(".completed, .completed tbody")
 const planToReadTable = document.querySelectorAll(".plan-to-read, .plan-to-read tbody") ;
 const emptyMessage = document.querySelector(".empty");
 
+const filters = document.querySelectorAll(".filter *")
+filters.forEach((filter) => {
+  filter.addEventListener("click", () => filterTables(filter.textContent))
+})
 
 addButton.addEventListener("click", () => {
     modal.showModal()
@@ -29,9 +38,7 @@ form.addEventListener('submit', (e) => {
 })
 
 
-const completedArray = [];
-const readingArray = [];
-const planToReadArray = [];
+
 
 function Book(title, author, pageCount, raiting, status) {
   this.title = title;
@@ -82,11 +89,6 @@ function renderBooks(elements, array) {
     elements[0].classList.toggle("hidden");
     emptyMessage.classList.add("hidden")
   }
-
-  // for each object in the books array
-    // make a new row in the table
-      // make a new cell for each value in the object and add it to the row
-
 }
 
 function sortByRating(array) {
@@ -97,3 +99,31 @@ function sortByName(array) {
   array.sort((a, b) => a.title - b.title);
 }
 
+function filterTables(filter) {
+  if (filter == "Reading" && readingArray.length > 0) {
+    completedTable[0].classList.add("hidden");
+    planToReadTable[0].classList.add("hidden");
+    readingTable[0].classList.remove("hidden");
+  }
+  else if (filter == "Completed" && completedArray.length > 0) {
+    completedTable[0].classList.remove("hidden");
+    planToReadTable[0].classList.add("hidden");
+    readingTable[0].classList.add("hidden");
+  }
+  else if (filter == "Plan to read" && planToReadArray.length > 0) {
+    completedTable[0].classList.add("hidden");
+    planToReadTable[0].classList.remove("hidden");
+    readingTable[0].classList.add("hidden");
+  }
+  else {
+    if (completedArray.length > 0) {
+        completedTable[0].classList.remove("hidden");
+    }
+    if (planToReadArray.length > 0) {
+      planToReadTable[0].classList.remove("hidden");
+    }
+    if (readingArray.length > 0) {
+      readingTable[0].classList.remove("hidden");
+    }
+  }
+}
