@@ -8,12 +8,6 @@ const addButton = document.querySelector(".add");
 const modal = document.querySelector("dialog");
 const form = modal.querySelector("form");
 
-// edit book status modal
-// const editStatus = document.querySelector("#editStatus");
-// const editForm = editStatus.querySelector("form");
-
-
-
 // select all 3 tables
 const readingTable = document.querySelectorAll(".reading, .reading tbody");
 const completedTable = document.querySelectorAll(".completed, .completed tbody");
@@ -47,9 +41,6 @@ form.addEventListener('submit', (e) => {
     isEditMode = false;
   }
 })
-
-
-
 
 function Book(title, author, pageCount, raiting, status) {
   this.title = title;
