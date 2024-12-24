@@ -2,11 +2,17 @@ const completedArray = [];
 const readingArray = [];
 const planToReadArray = [];
 
+let currentArgs = [];
+let isEditMode = false;
 const addButton = document.querySelector(".add");
 const modal = document.querySelector("dialog");
 const form = modal.querySelector("form");
 
-const editOptions = document.querySelector("#editOptions")
+// edit book status modal
+// const editStatus = document.querySelector("#editStatus");
+// const editForm = editStatus.querySelector("form");
+
+
 
 // select all 3 tables
 const readingTable = document.querySelectorAll(".reading, .reading tbody");
@@ -35,6 +41,10 @@ form.addEventListener('submit', (e) => {
       formData.get('pages'),
       formData.get('rating'),
       formData.get('status'))
+  }
+  if (isEditMode) {
+    deleteBook(currentArgs[0], currentArgs[1], currentArgs[2])
+    isEditMode = false;
   }
 })
 
@@ -92,8 +102,8 @@ function renderBooks(elements, array) {
         editIcon.classList.add('edit');
         editIcon.addEventListener('click', () => {
           const parentRow = editIcon.closest('tr');
-          const parentIndex = parentRow.rowIndex;
-          editBook(elements, array, parentIndex)
+          const parentIndex = parentRow.rowIndex - 1;
+          editBook(elements, array, parentIndex);
         })
         // make delete Icon 
         const deleteIcon = document.createElement("img");
@@ -101,7 +111,7 @@ function renderBooks(elements, array) {
         deleteIcon.classList.add('delete');
         deleteIcon.addEventListener('click', () => {
           const parentRow = deleteIcon.closest('tr');
-          const parentIndex = parentRow.rowIndex;
+          const parentIndex = parentRow.rowIndex - 1;
           deleteBook(elements, array, parentIndex)
         });
         tableCell.appendChild(editIcon);
@@ -112,10 +122,7 @@ function renderBooks(elements, array) {
     elements[1].appendChild(tableRow);
   });
 
-  if (array.length <= 0) {
-    elements[0].classList.add("hidden");
-  }
-  else {
+  if (elements[0].classList.contains("hidden")) {
     elements[0].classList.remove("hidden");
     emptyMessage.classList.add("hidden")
   }
@@ -160,10 +167,21 @@ function filterTables(filter) {
 
 
 function deleteBook(elements, array, index) {
-  array.splice(index - 1, 1);
-  renderBooks(elements, array);
+  array.splice(index, 1);
+  elements[1].deleteRow(index);
+  if (array.length <= 0) {
+    elements[0].classList.add("hidden");
+  }
 }
 
 function editBook(elements, array, index) {
+  isEditMode = true;
+  currentArgs = arguments;
+  document.querySelector("form #title").value = array[index].title;
+  document.querySelector("form #author").value = array[index].author;
+  document.querySelector("form #pages").value = array[index].pageCount;
+  document.querySelector("form #rating").value = array[index].rating;
+  document.querySelector("form #status").value = array[index].status;
+  modal.showModal();
 
 }

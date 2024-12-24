@@ -272,3 +272,7 @@ td:last-child:hover .delete{
   visibility: visible;
   cursor: pointer;
 }
+
+#editStatus button {
+  width: 70%;
+}
