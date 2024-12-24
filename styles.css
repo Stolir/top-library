@@ -187,6 +187,22 @@ th:nth-child(3), th:nth-child(4){
   text-align: center;
 }
 
+td:last-child {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+/* td:last-child:hover::after {
+  background-image: url('/assets/pencil.svg');
+  display: inline-block;
+  width: 20px; 
+  height: 20px;
+  content: "";
+  margin-left: auto;
+  cursor: pointer;
+} */
+
 .add {
   position: fixed;
   bottom: 25px;
@@ -248,4 +264,16 @@ button:hover {
 
 #status {
   margin-bottom: 5px;
+}
+
+
+.edit {
+  visibility: hidden;
+  width: 20px;
+  margin-left: auto;
+}
+
+td:last-child:hover .edit {
+  visibility: visible;
+  cursor: pointer;
 }

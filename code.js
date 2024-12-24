@@ -77,10 +77,19 @@ function renderBooks(elements, array) {
   }
 
   array.forEach((obj) => {
+    let index = 0;
+    const keysLength = Object.keys(obj).length;
     const tableRow = elements[1].insertRow(-1);
     for (let key in obj) {
       const tableCell = tableRow.insertCell(-1);
       tableCell.textContent = obj[key];
+      if (index === keysLength - 1) {
+        const icon = document.createElement("img");
+        icon.setAttribute('src', 'assets/pencil.svg')
+        icon.classList.add('edit')
+        tableCell.appendChild(icon)
+      }
+      index++;
     }
     elements[1].appendChild(tableRow);
   });
