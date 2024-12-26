@@ -43,7 +43,7 @@ form.addEventListener('submit', (e) => {
       input.value = "";
     })
   }
-  modoal.close();
+  modal.close();
 })
 
 function Book(title, author, pageCount, raiting, status) {
