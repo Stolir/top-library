@@ -39,7 +39,11 @@ form.addEventListener('submit', (e) => {
   if (isEditMode) {
     deleteBook(currentArgs[0], currentArgs[1], currentArgs[2])
     isEditMode = false;
+    document.querySelectorAll('form input').forEach((input) => {
+      input.value = "";
+    })
   }
+  modoal.close();
 })
 
 function Book(title, author, pageCount, raiting, status) {
