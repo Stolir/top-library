@@ -44,12 +44,14 @@ form.addEventListener('submit', (e) => {
   form.reset();
 })
 
-function Book(title, author, pageCount, raiting, status) {
+class Book {
+constructor (title, author, pageCount, raiting, status) {
   this.title = title;
   this.author = author;
   this.pageCount = pageCount;
   this.rating = raiting;
   this.status = status;
+}
 }
 
 function addBookToLibrary(title, author, pageCount, raiting, status) {
