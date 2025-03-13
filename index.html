@@ -104,10 +104,12 @@
             <div class="flex column">
                 <label for="pages">Pages:</label>
                 <input type="number" name="pages" id="pages" min="1" required>
+                <span class="required"></span>
             </div>
             <div class="flex column">
                 <label for="rating">Rating:</label>
                 <input type="number" name="rating" id="rating" min="0" max="10" step="0.5" required>
+                <span class="required"></span>
             </div>
             <div class="flex column">
                 <label for="status">Status:</label>
@@ -117,6 +119,7 @@
                     <option value="Reading">Reading</option>
                     <option value="Plan to read">Plan to read</option>
                 </select>
+                <span class="required"></span>
             </div>
             <button type="submit">Confirm</button>
             <button type="submit" formmethod="dialog">Cancel</button>

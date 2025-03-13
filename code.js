@@ -180,3 +180,62 @@ function editBook(elements, array, index) {
   modal.showModal();
 
 }
+
+// JS form validation
+const titleField = form.querySelector("#title");
+const authorField = form.querySelector("#author");
+const pagesField = form.querySelector("#pages");
+const ratingField = form.querySelector("#rating")
+
+titleField.addEventListener("focusout", () => {
+  if (titleField.validity.valueMissing) {
+    titleField.setCustomValidity("Please enter a valid title")
+  }
+  else {
+    titleField.setCustomValidity("")
+  }
+
+  titleField.reportValidity();
+})
+
+authorField.addEventListener("focusout", () => {
+  if (authorField.validity.valueMissing) {
+    authorField.setCustomValidity("Please enter an author name.")
+  }
+  else if (authorField.validity.patternMismatch) {
+    authorField.setCustomValidity("Author name should contain only letters and spaces.")
+  }
+  else {
+    authorField.setCustomValidity("")
+  }
+
+  authorField.reportValidity();
+})
+
+pagesField.addEventListener("focusout", () => {
+  if (pagesField.validity.valueMissing) {
+    pagesField.setCustomValidity("Please enter the number of pages.")
+  }
+  else if (authorField.validity.tooShort) {
+    pagesField.setCustomValidity("Value must be above 0.")
+  }
+  else {
+    pagesField.setCustomValidity("")
+  }
+
+  pagesField.reportValidity()
+})
+
+ratingField.addEventListener("focusout", () => {
+  if (ratingField.validity.valueMissing) {
+    ratingField.setCustomValidity("Please enter the rating.")
+  }
+  else if (ratingField.validity.rangeUnderflow || ratingField.validity.rangeOverflow) {
+    ratingField.setCustomValidity("Value must be in range 0-10.")
+  }
+  else {
+    ratingField.setCustomValidity("")
+  }
+
+  pagesField.reportValidity()
+})
